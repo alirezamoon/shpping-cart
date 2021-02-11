@@ -1,8 +1,10 @@
 import React from 'react'
 import ProductItem from './ProductItem'
+import { connect } from 'react-redux'
+
 
 const ProductList = (props) => {
-    // console.log(props)
+    // console.log(Object.keys(props.products))
     return (
         <div>
             <h3>Product</h3>
@@ -15,4 +17,11 @@ const ProductList = (props) => {
     )
 }
 
-export default ProductList
+const getProducts = products => Object.keys(products).map(id => products[id])
+
+const mapStateToProps = state => {
+    return { products: getProducts(state.products) }
+}
+
+
+export default connect(mapStateToProps)(ProductList)

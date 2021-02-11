@@ -16,7 +16,7 @@ if(process.env.NODE_ENV !== 'production'){
 }
 
 
-const store = createStore(reducer, applyMiddleware(...middleware))
+const store = createStore(reducer, composeWithDevTools(applyMiddleware(...middleware)))
 
 ReactDOM.render(
   <React.StrictMode>

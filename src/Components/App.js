@@ -17,7 +17,7 @@ const App = (props) => {
   return (
     <div className="App">
       <h2>Shopping Cart</h2>
-      {/* <ProductList /> */}
+      <ProductList />
     </div>
   );
 }
