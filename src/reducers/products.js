@@ -1,9 +1,9 @@
-import { RECEIVE_PRODUCTS } from './../constants/actionTypes'
+import * as type from './../constants/actionTypes'
 
 
 const products = (state = {}, action) => {
     switch (action.type) {
-        case RECEIVE_PRODUCTS:
+        case type.RECEIVE_PRODUCTS:
             return {
                 ...state,
                 ...action.products.reduce((obj, product) => {
@@ -11,6 +11,16 @@ const products = (state = {}, action) => {
                     return obj
                 }, {})
             }
+        case type.ADD_TO_CART:
+            let product = state[action.productId]
+            return {
+                ...state,
+                [action.productId]: {
+                    ...product,
+                    inventory: product.inventory - 1
+                }
+            }
+
         default:
             return state
 
